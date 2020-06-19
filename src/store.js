@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
-const initalState = {};
 
-const store = createStore(rootReducer, initalState);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;

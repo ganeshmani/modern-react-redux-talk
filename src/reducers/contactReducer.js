@@ -1,11 +1,4 @@
-import {
-  FETCH_CONTACTS,
-  FETCH_CONTACT_DETAIL,
-  ADD_CONTACT,
-  SEARCH_CONTACT,
-  DELETE_CONTACT,
-  UPDATE_CONTACT,
-} from "../actions/types";
+import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
   contacts: [],
@@ -13,59 +6,43 @@ const initialState = {
   searchTerm: "",
 };
 
-export default function (state = initialState, action) {
-  switch (action.type) {
-    case FETCH_CONTACTS:
-      return {
-        ...state,
-      };
+export default createReducer(initialState, {
+  FETCH_CONTACTS: (state, action) => state,
+  ADD_CONTACT: (state, action) => ({
+    ...state,
+    contacts: [
+      ...state.contacts,
+      { ...action.payload, id: state.contacts.length + 1 },
+    ],
+  }),
+  DELETE_CONTACT: (state, action) => ({
+    ...state,
+    contacts: state.contacts.filter((item) => item.id !== action.payload),
+    currentContact:
+      action.payload === state.currentContact.id
+        ? {}
+        : state.contacts.length > 0
+        ? state.contacts[0]
+        : {},
+  }),
+  UPDATE_CONTACT: (state, action) => ({
+    ...state,
+    contacts: state.contacts.map((item) => {
+      if (item.id === action.payload.id) {
+        return action.payload;
+      } else {
+        return item;
+      }
+    }),
+    currentContact: action.payload,
+  }),
+  FETCH_CONTACT_DETAIL: (state, action) => {
+    const result = state.contacts.find((item) => item.id === action.payload);
+    return {
+      ...state,
+      currentContact: result,
+    };
+  },
 
-    case ADD_CONTACT:
-      return {
-        ...state,
-        contacts: [
-          ...state.contacts,
-          { ...action.payload, id: state.contacts.length + 1 },
-        ],
-      };
-
-    case DELETE_CONTACT:
-      return {
-        ...state,
-        contacts: state.contacts.filter((item) => item.id !== action.payload),
-        currentContact:
-          action.payload === state.currentContact.id
-            ? {}
-            : state.contacts.length > 0
-            ? state.contacts[0]
-            : {},
-      };
-
-    case UPDATE_CONTACT:
-      const data = action.payload;
-      return {
-        ...state,
-        contacts: state.contacts.map((item) => {
-          if (item.id === data.id) {
-            return data;
-          } else {
-            return item;
-          }
-        }),
-        currentContact: data,
-      };
-
-    case FETCH_CONTACT_DETAIL:
-      const result = state.contacts.find((item) => item.id === action.payload);
-      return {
-        ...state,
-        currentContact: result,
-      };
-
-    case SEARCH_CONTACT:
-      return { ...state, searchTerm: action.payload };
-
-    default:
-      return state;
-  }
-}
+  SEARCH_CONTACT: (state, action) => ({ ...state, searchTerm: action.payload }),
+});

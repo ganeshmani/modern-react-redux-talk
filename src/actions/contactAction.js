@@ -1,49 +1,36 @@
-import {
-  FETCH_CONTACTS,
-  ADD_CONTACT,
-  FETCH_CONTACT_DETAIL,
-  SEARCH_CONTACT,
-  DELETE_CONTACT,
-  UPDATE_CONTACT,
-} from "./types";
+import { createAction } from "@reduxjs/toolkit";
 
-export const fetchContacts = () => {
-  return {
-    type: FETCH_CONTACTS,
-  };
-};
+export const fetchContacts = createAction("FETCH_CONTACTS");
 
-export const addContact = (payload) => {
+export const addContact = createAction("ADD_CONTACT", (payload) => {
   return {
-    type: ADD_CONTACT,
     payload,
   };
-};
+});
 
-export const deleteContact = (payload) => {
+export const deleteContact = createAction("DELETE_CONTACT", (payload) => {
   return {
-    type: DELETE_CONTACT,
     payload,
   };
-};
+});
 
-export const updateContact = (payload) => {
+export const updateContact = createAction("UPDATE_CONTACT", (payload) => {
   return {
-    type: UPDATE_CONTACT,
     payload,
   };
-};
+});
 
-export const fetchContactDetails = (payload) => {
+export const fetchContactDetails = createAction(
+  "FETCH_CONTACT_DETAIL",
+  (payload) => {
+    return {
+      payload,
+    };
+  }
+);
+
+export const searchContact = createAction("SEARCH_CONTACT", (payload) => {
   return {
-    type: FETCH_CONTACT_DETAIL,
     payload,
   };
-};
-
-export const searchContact = (payload) => {
-  return {
-    type: SEARCH_CONTACT,
-    payload,
-  };
-};
+});
