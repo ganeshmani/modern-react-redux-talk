@@ -3,7 +3,7 @@ import AddContact from "../AddContact/AddContact";
 import UpdateContact from "../UpdateContact/UpdateContact";
 import ContactList from "../ContactList/ContactList";
 import { connect } from "react-redux";
-import { searchContact, deleteContact } from "../../actions/contactAction";
+import { deleteContact, searchContact } from "../../reducers/contactSlice";
 import ContactDetails from "../ContactDetails/ContactDetails";
 import { getCurrentContact } from "../../selectors";
 const Header = ({ searchContact, currentContact, deleteContact }) => {
@@ -118,11 +118,6 @@ const mapStateToProps = (state) => ({
   currentContact: getCurrentContact(state),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    searchContact: (payload) => dispatch(searchContact(payload)),
-    deleteContact: (payload) => dispatch(deleteContact(payload)),
-  };
-};
+const mapDispatchToProps = { deleteContact, searchContact };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
