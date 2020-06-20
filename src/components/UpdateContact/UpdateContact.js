@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { updateContact } from "../../actions/contactAction";
+import { updateContact } from "../../reducers/contactSlice";
 import { getCurrentContact } from "../../selectors/index";
 const UpdateContact = ({
   updateshow,
@@ -105,9 +105,5 @@ const mapStateToProps = (state) => ({
   currentContact: getCurrentContact(state),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateContact: (payload) => dispatch(updateContact(payload)),
-  };
-};
+const mapDispatchToProps = { updateContact };
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateContact);

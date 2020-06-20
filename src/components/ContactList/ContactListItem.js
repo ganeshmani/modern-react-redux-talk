@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCurrentContact } from "../../selectors/index";
-import { fetchContactDetails } from "../../actions/contactAction";
+import { fetchContactDetails } from "../../reducers/contactSlice";
 import UserAvatar from "react-user-avatar";
 
 const ContactListItem = ({
@@ -46,10 +46,6 @@ const mapStateToProps = (state) => ({
   currentContact: getCurrentContact(state),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchContactDetails: (payload) => dispatch(fetchContactDetails(payload)),
-  };
-};
+const mapDispatchToProps = { fetchContactDetails };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactListItem);

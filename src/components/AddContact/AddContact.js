@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { addContact } from "../../actions/contactAction";
+import { addContact } from "../../reducers/contactSlice";
 const AddContact = ({ show, onContactSubmit, addContact }) => {
   const [state, setState] = useState({
     name: "",
@@ -96,9 +96,5 @@ const AddContact = ({ show, onContactSubmit, addContact }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addContact: (payload) => dispatch(addContact(payload)),
-  };
-};
+const mapDispatchToProps = { addContact };
 export default connect(null, mapDispatchToProps)(AddContact);
