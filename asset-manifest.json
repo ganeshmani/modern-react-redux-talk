@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/modern-react-redux-talk/static/css/main.c838c056.chunk.css",
+    "main.js": "/modern-react-redux-talk/static/js/main.284e6c6b.chunk.js",
+    "main.js.map": "/modern-react-redux-talk/static/js/main.284e6c6b.chunk.js.map",
+    "runtime-main.js": "/modern-react-redux-talk/static/js/runtime-main.b95634fa.js",
+    "runtime-main.js.map": "/modern-react-redux-talk/static/js/runtime-main.b95634fa.js.map",
+    "static/js/2.d4304210.chunk.js": "/modern-react-redux-talk/static/js/2.d4304210.chunk.js",
+    "static/js/2.d4304210.chunk.js.map": "/modern-react-redux-talk/static/js/2.d4304210.chunk.js.map",
+    "index.html": "/modern-react-redux-talk/index.html",
+    "precache-manifest.d74d951ef1f4463237864ed326992d63.js": "/modern-react-redux-talk/precache-manifest.d74d951ef1f4463237864ed326992d63.js",
+    "service-worker.js": "/modern-react-redux-talk/service-worker.js",
+    "static/css/main.c838c056.chunk.css.map": "/modern-react-redux-talk/static/css/main.c838c056.chunk.css.map",
+    "static/js/2.d4304210.chunk.js.LICENSE.txt": "/modern-react-redux-talk/static/js/2.d4304210.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b95634fa.js",
+    "static/js/2.d4304210.chunk.js",
+    "static/css/main.c838c056.chunk.css",
+    "static/js/main.284e6c6b.chunk.js"
+  ]
+}
